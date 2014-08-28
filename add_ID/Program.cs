@@ -10,7 +10,7 @@ namespace add_ID
 	class MainClass
 	{
 		/// <summary>
-		/// arg1 = directry, arg2 = InChI file
+		/// arg1 = sd file, arg2 = InChI file, arg3 = ID
 		/// </summary>
 		/// <param name="s">The command-line arguments.</param>
 		public static void Main(string[] s)
@@ -18,10 +18,12 @@ namespace add_ID
 			StringBuilder sb = new StringBuilder ();
 			string file_sdf = String.Empty;
 			string file_inchi = String.Empty;
+			string SDF_ID = "ID";
 
 			for (int N = 1; N < Environment.GetCommandLineArgs ().Length; N++) {
 				file_sdf = Environment.GetCommandLineArgs () [1];
 				file_inchi = Environment.GetCommandLineArgs () [2];
+				SDF_ID  = Environment.GetCommandLineArgs () [3];
 			}
 
 			if (File.Exists(file_inchi) == true && File.Exists(file_sdf) == true) {
@@ -35,7 +37,7 @@ namespace add_ID
 
 				foreach (var mol in mols) {
 
-					string[] ID = mol.Split (new string[] {">  <ID>"}, StringSplitOptions.RemoveEmptyEntries);
+					string[] ID = mol.Split (new string[] {">  <" + SDF_ID + ">"}, StringSplitOptions.RemoveEmptyEntries);
 
 					if (ID.Length > 1) {
 						string[] line = ID[1].Replace("\r", "").Split(new char[] {'\n'}) ;
