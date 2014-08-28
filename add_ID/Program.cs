@@ -57,12 +57,21 @@ namespace add_ID
 
 
 				//if (inchis.Length == IDs.Count) {
-					for (var i = 0; i < inchis.Length; i++) {
+
+				int count = inchis.Length;
+
+				if (inchis.Length > IDs.Count) {
+					count = IDs.Count;
+				}
+
+				for (var i = 0; i < count; i++) {
+					if (inchis.Length > i && IDs.Count > i) {
 						sb.AppendLine (IDs [i] + "\t" + inchis [i]);
 					}
+				}
 
-					DateTime dt = DateTime.Now;
-					string dtString = dt.ToString ("yyyyMMddHHmmss");
+				DateTime dt = DateTime.Now;
+				string dtString = dt.ToString ("yyyyMMddHHmmss");
 
 				StreamWriter writer = new StreamWriter ("add_ID_" + dtString + "_" + file_sdf + "_" + file_inchi + ".txt",
 						                      false,  // 上書き （ true = 追加 ）
