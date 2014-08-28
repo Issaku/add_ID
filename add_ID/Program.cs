@@ -35,12 +35,14 @@ namespace add_ID
 
 				foreach (var mol in mols) {
 
-					string[] ID = SDF.Split (new string[] {">  <ID>"}, StringSplitOptions.RemoveEmptyEntries);
+					string[] ID = mol.Split (new string[] {">  <ID>"}, StringSplitOptions.RemoveEmptyEntries);
 
 					if (ID.Length > 1) {
 						string[] line = ID[1].Replace("\r", "").Split(new char[] {'\n'}) ;
-						if (line.Length > 0) {
-							IDs.Add (line [0]);
+						if (line.Length > 1) {
+							IDs.Add (line [1]);
+							//Console.WriteLine (line [0]);
+							Console.WriteLine (line [1]);
 						}
 					}
 				}
@@ -52,24 +54,24 @@ namespace add_ID
 				Console.WriteLine ("InChI count: " + inchis.Length);
 
 
-				if (inchis.Length == IDs.Count) {
-					for (var i = 0; i > inchis.Length; i++) {
+				//if (inchis.Length == IDs.Count) {
+					for (var i = 0; i < inchis.Length; i++) {
 						sb.AppendLine (IDs [i] + "\t" + inchis [i]);
 					}
 
 					DateTime dt = DateTime.Now;
 					string dtString = dt.ToString ("yyyyMMddHHmmss");
 
-					StreamWriter writer = new StreamWriter ("add_ID_" + dtString + ".txt",
+				StreamWriter writer = new StreamWriter ("add_ID_" + dtString + "_" + file_sdf + "_" + file_inchi + ".txt",
 						                      false,  // 上書き （ true = 追加 ）
 						                      Encoding.UTF8);
 
 					writer.Write (sb.ToString ());
 					writer.Close ();
 					Console.WriteLine ("finished");
-				} else {
-					Console.WriteLine ("Please check data-count");
-				}
+				//} else {
+				//	Console.WriteLine ("Please check data-count");
+				//}
 
 			} else {
 				Console.WriteLine ("Please check data");
