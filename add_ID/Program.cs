@@ -55,9 +55,6 @@ namespace add_ID
 
 				Console.WriteLine ("InChI count: " + inchis.Length);
 
-
-				//if (inchis.Length == IDs.Count) {
-
 				int count = inchis.Length;
 
 				if (inchis.Length > IDs.Count) {
@@ -80,9 +77,6 @@ namespace add_ID
 					writer.Write (sb.ToString ());
 					writer.Close ();
 					Console.WriteLine ("finished");
-				//} else {
-				//	Console.WriteLine ("Please check data-count");
-				//}
 
 			} else {
 				Console.WriteLine ("Please check data");

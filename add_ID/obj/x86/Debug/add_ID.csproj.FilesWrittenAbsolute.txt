@@ -1,0 +1,5 @@
+/Users/yamada/Projects/add_ID/add_ID/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/yamada/Projects/add_ID/add_ID/bin/Debug/add_ID.exe.mdb
+/Users/yamada/Projects/add_ID/add_ID/bin/Debug/add_ID.exe
+/Users/yamada/Projects/add_ID/add_ID/obj/x86/Debug/add_ID.exe
+/Users/yamada/Projects/add_ID/add_ID/obj/x86/Debug/add_ID.exe.mdb
